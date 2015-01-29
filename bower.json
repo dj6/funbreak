@@ -1,0 +1,26 @@
+{
+  "name": "imovieAPP",
+  "version": "0.0.1",
+  "authors": [
+    "nemo-dengjie <597073748@qq.com>"
+  ],
+  "description": "watch movie",
+  "main": "app.js",
+  "keywords": [
+    "movie"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/libs",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.2"
+  }
+}
+
+//bower init生成

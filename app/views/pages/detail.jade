@@ -1,0 +1,58 @@
+extends ../layout.jade
+
+block content
+	.container
+		.row
+			.col-md-5
+				embed(src="#{movie.flash}",allowFullScreen="true",quality="high",width="720",height="600",align="middle",type="application/x-shockwave-flash")
+			.col-md-5
+				dl.dl-horizontal
+					dt 电影名称
+					dd= movie.title    
+					dt 导演
+					dd= movie.director
+					dt 国家
+					dd= movie.country
+					dt 语言
+					dd= movie.language
+					dt 上映年份
+					dd= movie.year
+					dt 简介
+					dd= movie.summary
+			.col-md-2
+				ul
+				each item in comments
+					li
+						h4 #{item.from.name}
+						p #{item.content}
+
+				form(method="POST" action="/user/comment")
+					input(type="hidden" name="movie" value="#{movie._id}")
+							
+					.form-group
+						label.control-label(for='content') 评论
+						input#content.form-control(name="content" type='text')
+					if user	
+						input.form-control(type="submit" value="提交")
+						input(type="hidden" name="from" value="#{user._id}")
+					else
+						a.navbar-link(href="#",data-toggle="modal",data-target="#signinModal") 登陆后评论
+						
+
+#signinModal.modal.fade
+.modal-dialog
+	.modal-content
+		form(method="POST", action="/user/signin")
+			.modal-header 登录
+			.modal-body
+				.form-group
+					label(for="signinName") 用户名
+					input#signinName.form-control(name="name", type="text")
+				.form-group
+					label(for="signinPassword") 密码
+					input#signinPassword.form-control(name="password", type="password")
+			.modal-footer
+				button.btn.btn-default(type="button", data-dismiss="modal") 关闭
+				button.btn.btn-success(type="submit") 提交								
+
+

@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+	.container
+		.row
+			.col-md-7
+				form(method="POST" action="/user/signin")
+					.form-group
+						label.control-label(for='name') 用户名
+						input#name.form-control(name='name' type='text')
+					.form-group
+						label.control-label(for='password') 密码
+						input#password.form-control(name='password' type='password')
+					.form-group
+						input.col-sm-2.form-control(type="submit" value="提交") 		 

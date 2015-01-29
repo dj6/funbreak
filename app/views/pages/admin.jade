@@ -1,0 +1,45 @@
+extends ../layout.jade
+
+block content
+	.container
+		.row
+			form.form-horizontal(method="post" action="/admin/movie/new")
+				input(type="hidden",name="_id",value="#{movie._id}")
+				//- input(type="hidden",name="_id" )
+
+				.form-group
+					label.col-sm-2.control-label(for="inputTitle") 电影名称 
+					.col-sm-10 
+						input#inputTitle.form-control(type="text" name="title" )
+				.form-group
+					label.col-sm-2.control-label(for="inputDirector") 导演
+					.col-sm-10 
+						input#inputDirector.form-control(type="text" name="director" )
+				.form-group
+					label.col-sm-2.control-label(for="inputCountry") 国家
+					.col-sm-10 
+						input#inputCountry.form-control(type="text" name="country")
+				.form-group
+					label.col-sm-2.control-label(for="inputYear") 年份
+					.col-sm-10 
+						input#inputYear.form-control(type="text" name="year")
+				.form-group
+					label.col-sm-2.control-label(for="inputPoster") 图片地址
+					.col-sm-10 
+						input#inputPoster.form-control(type="text" name="poster")
+				.form-group
+					label.col-sm-2.control-label(for="inputFlash") 影片地址
+					.col-sm-10 
+						input#inputFlash.form-control(type="text" name="flash")
+				.form-group
+					label.col-sm-2.control-label(for="inputSummary") 简介
+					.col-sm-10 
+						input#inputSummary.form-control(type="text" name="summary")
+				.form-group
+					label.col-sm-2.control-label(for="inputLanguage") 语言
+					.col-sm-10 
+						input#inputLanguage.form-control(type="text" name="language")
+				.form-group
+					input.col-sm-2.form-control(type="submit" value="提交") 		
+
+																
