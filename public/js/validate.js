@@ -105,8 +105,7 @@ $().ready(function() {
 	});
 
 	signinForm.submit(function(){
-		$("#signinButton").attr("disabled",true);
-		error2.text("");
+
 		$.post(signinForm.attr("action"),
 			signinForm.serialize(),
 			function(result,status){
