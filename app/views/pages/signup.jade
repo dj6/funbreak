@@ -3,12 +3,13 @@ extends ../layout
 block content
 	.container
 		.row
-			form(method='POST' action="/user/signup")
+			form(method='POST' action="/user/signup" id="signup")
 				.form-group
 					label.control-label(for='name') 用户名
-					input#name.form-control(name="name" type='text')
+					input#name.form-control(name="name" type='text' required minlength='4')
 				.form-group
 					label.control-label(for='password') 密码
 					input#password.form-control(name="password" type='password')
 				.form-group
-					input.form-control(type='submit' value='提交')		
+					input.form-control(type='submit' value='提交')
+script(src="/js/validate.js")					

@@ -1,10 +1,14 @@
 var mongoose = require('mongoose');
 var SALT_WORK_FACTOR = 10;
-var bcrypt = require('bcrypt');//生成随机盐，将这个随机盐和用户输入的密码联合加密。
+//var bcrypt = require('bcrypt');//生成随机盐，将这个随机盐和用户输入的密码联合加密。
 var UserSchema = new mongoose.Schema({
   name: {
     unique: true,
     type: String
+  },
+  email:{
+  	unique:true,
+  	type: String
   },
   password: String,
   // 0: nomal user
@@ -36,18 +40,23 @@ UserSchema.pre('save',function(next){
 		this.meta.updateAt = Date.now();
 	}
 
-	bcrypt.genSalt(SALT_WORK_FACTOR,function(err,salt){
+//before formal-bcrypt
+	// bcrypt.genSalt(SALT_WORK_FACTOR,function(err,salt){
 		
-		if(err) return next(err);
-		bcrypt.hash(user.password,salt,function(err,hash){
-			console.log("add salt");
-			if(err) return next(err);
-			user.password = hash;
-			console.log('salt added password '+user.password);
-			next();
-		});
-	});
-//	next();
+	// 	if(err) return next(err);
+	// 	bcrypt.hash(user.password,salt,function(err,hash){
+	// 		console.log("add salt");
+	// 		if(err) return next(err);
+	// 		user.password = hash;
+	// 		console.log('salt added password '+user.password);
+	// 		next();
+	// 	});
+	// });
+//end
+
+//after simple password
+	next();
+//end	
 
 });
 
@@ -64,32 +73,24 @@ UserSchema.statics = {
 	}
 };
 
-
-// UserSchema.method('saveSalt',function(){
-// 	var user = this;
-// 	console.log("before salt"+ user);
-// 	bcrypt.genSalt(SALT_WORK_FACTOR,function(err,salt){
-// 		if(err) return next("genSalt "+err);
-// 		bcrypt.hash(user.password,salt,function(err,hash){
-// 			console.log("add salt");
-// 			if(err) return next("add salt "+err);
-// 			user.password = hash;
-// 			console.log('salt added password '+user.password);
-// 			return user;	
-// 		});
-// 	});			
-
-// //	console.log("after salt"+user);		
-
-// });
-
 UserSchema.methods = {
  comparePassword : function(_password,cb){
  	//console.log(_password);
- 	bcrypt.compare(_password,this.password,function(err,ismatched){
- 		if(err) return cb(err);
- 		cb(null,ismatched);
- 	});
+
+//before 	
+	// bcrypt.compare(_password,this.password,function(err,ismatched){
+	// if(err) return cb(err);		
+ // 		cb(null,ismatched);
+ // 	});
+
+//end
+
+
+//after
+ 	var ismatched = false;
+    if(_password == this.password) ismatched = true;
+    cb(null,ismatched);
+//end 
  }
 }
 module.exports = UserSchema;

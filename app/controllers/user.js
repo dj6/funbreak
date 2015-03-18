@@ -1,29 +1,45 @@
 var User = require('../models/user');
-
+var localhost = "localhost:3000";
 module.exports.signup = function(req,res){
-		//console.log('get in sign up' + user);
 		var _user = req.body;
-		console.log(_user);
-		User.findOne({name: _user.name},function(err, user){
+		console.log('ori'+req.originalUrl);
+
+		User.findOne({email: _user.email},function(err, user){
 			if(err) return console.log(err);
-			console.log('find user + '+ _user? 'yes':'no');
+			console.log('find user + '+ user? 'yes':'no');
 			if(user) {
-				console.log('find the same guy'+user);
-				res.redirect('/signin');
-
-
+				console.log('find the email guy'+user);
+				res.json({error:"邮箱已被注册！"});
+			// res.redirect('/signin');
 			}
 			else{
-				var user = new User({
-				name: _user.name,
-				password: _user.password
-				});
-				//console.log("FINAL RESULET +"+_user.saveSalt());
-				user.save(function(err,user){
-				if(err) return console.log('user sign up '+err);
-				console.log("success add user "+user );
-				res.redirect('/admin/userlist');
-				});
+
+					User.findOne({name:_user.name},function(err,user){
+						if(err) return console.log(err);
+						console.log('find user name'+ user? 'yes':'no');
+						if(user){
+							console.log('find the name guy'+user);
+							res.json({error:"昵称已被注册！"});
+						}else{
+							var user = new User({
+							name: _user.name,
+							email: _user.email,
+							password: _user.password
+							});
+							//console.log("FINAL RESULET +"+_user.saveSalt());
+							user.save(function(err,user){
+							if(err) return console.log('user sign up '+err);
+							console.log("success add user "+user );
+							console.log(localhost+req.originalUrl);
+							res.json({error:"pass",
+								user:user
+							});
+							// res.redirect(localhost+req.originalUrl);
+							});
+						}
+						
+					});							
+				
 			}
 		});	
 	};
@@ -50,23 +66,25 @@ module.exports.showSignup = function(req,res){
 
 module.exports.signin = function(req,res){
 		var _user = req.body;
-		var _name = _user.name;
+		var _email = _user.email;
 		var _password = _user.password;
-		if(_name){
-			User.findOne({name:_name},function(err,user){
+
+		if(_email){
+			User.findOne({email:_email},function(err,user){
 				if(err) return console.log(err);
 				if(!user){
 					console.log('no such user');
-					return res.redirect('/signup');
+					return res.json({error:"邮箱不存在！"});
 				}
 				user.comparePassword(_password,function(err,isMatched){
 					if(err) return console.log(err);
 					if(isMatched) {
 						req.session.user = user;
 						console.log('password match');
-						res.redirect('/');
+						res.json({error:"pass"});
+
 					}else{
-						res.redirect('/signin');
+						res.json({error:"密码错误！"});
 						console.log('password not match');
 					}
 				});			

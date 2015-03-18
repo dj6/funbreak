@@ -40,6 +40,7 @@ module.exports = function(app){
 	app.get('/admin/movie/list',User.loginRequired,User.adminRequired, Movie.list);
 	//list remove movie
 	app.delete('/admin/movie/delete',User.loginRequired,User.adminRequired,Movie.del);
+	// app.delete('/admin/movie/delete',Movie.del);
 
 	//Comment
 	app.post('/user/comment',User.loginRequired,Comment.save)

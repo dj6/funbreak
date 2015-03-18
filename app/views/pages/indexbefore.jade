@@ -1,0 +1,78 @@
+extends ../layout.jade
+
+block content
+	#index
+		.welcome
+			h1 欢迎你来到&nbsp;课间
+			p 我们每天精选一首mv，一个故事，一段演讲呈现给你
+			p 进来休息一下吧
+		.container
+			each item in movies
+				case item.type
+					when "音乐"
+						.row
+							.col-md-4.col-sm-2
+									h1 ONE 音乐
+									h3 #{item.title}
+									p #{item.summary}
+							.col-md-8.col-sm-10		
+								a(href="/movie/#{item._id}")
+									img.img-thumbnail(src="img/index1.jpg")
+					when "故事"							
+						.row.second
+							.col-md-8.col-sm-10		
+								a(href="/movie/#{item._id}")
+									img.img-thumbnail(src="img/index2.jpg")
+							.col-md-4.col-sm-2
+									h1 ONE 故事
+									h3 #{item.title}
+									p #{item.summary}
+					when "演讲"				
+						.row.second
+							.col-md-8.col-sm-10		
+								a(href="/movie/#{item._id}")
+									img.img-thumbnail(src="img/index3.jpg")
+							.col-md-4.col-sm-2
+									h1 ONE 演讲
+									h3 #{item.title}
+									p #{item.summary}
+						//- .carousel.slide(id="intro-carousel")
+						//- 	ol.carousel-indicators
+						//- 		li.active(data-target="#intro-carousel" data-slide-to="0")
+						//- 		li(data-target="#intro-carousel" data-slide-to="1")
+						//- 		li(data-target="#intro-carousel" data-slide-to="2")				
+						//- 	.carousel-inner
+						//- 			.active.item								
+						//- 				.carousel-caption
+						//- 					h2 ONE 音乐
+						//- 					h4 为你精选东方闪电sdfsd
+						//- 				img(src="img/index1.jpg")					
+						//- 			.item
+						//- 				.carousel-caption
+						//- 					h2 ONE 故事
+						//- 					h4 使用了四种栅格选项来形成栅格系统
+						//- 				img(src="img/index2.jpg")				
+						//- 			.item
+						//- 				.carousel-caption
+						//- 					h2 ONE 演讲
+						//- 					h4 这四种选项在官网上的介绍
+						//- 				img(src="img/index3.jpg")					
+						//- 		a.carousel-control.left(href="#intro-carousel" data-slide="prev")
+						//- 			span.glyphicon.glyphicon-chevron-left
+						//- 		a.carousel-control.right(href="#intro-carousel" data-slide="next")
+						//- 			span.glyphicon.glyphicon-chevron-right
+			
+	//- .container					
+		//- .row
+		//- 	each item in movies
+		//- 		.col-md-4
+		//- 			.thumbnail
+		//- 				a(href="/movie/#{item._id}")
+		//- 					img(src="#{item.poster}",alt="#{item.title}")
+		//- 				.caption
+		//- 					h3 #{item.title}
+		//- 					p
+		//- 						a.btn.btn-primary(href="/movie/#{item._id}",role="button")  详情
+
+
+

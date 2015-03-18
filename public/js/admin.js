@@ -1,4 +1,7 @@
+//视频查看列表删除某项 ajax
+
 $(function(){
+
 	$(".del").click(function(e) {
 		/* Act on the event */
 		var target = $(e.target);
@@ -18,4 +21,5 @@ $(function(){
 			}	
 		});
 	});
+
 })

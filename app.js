@@ -44,7 +44,10 @@ require('./config/routes')(app);
 
 // parse application/json
 app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname,'public'))); //其他文件引用js文件、lib文件的根目录
+
+var staticDir = __dirname;
+app.use(express.static(path.join(staticDir,'public'))); //其他文件引用js文件、lib文件的根目录
+//app.use(express.static(__dirname.join('public'))); 
 app.listen(port);
 console.log("current dir "+ __dirname);
 console.log('ok '+port); 

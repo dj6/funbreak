@@ -1,57 +1,76 @@
-.container
-	.row
-		.page-header
-			h1 #{title}
-				span    
-				small #{small}
-.navbar.navbar-default.navbar-fixed-bottom
+header.navbar.navbar-static-top
 	.container
-		.navbar-header
-			a.navbar-brand(href="/") 重度科幻迷
-			if user
-				p.navbar-text.navbar-right 
-					span 欢迎你, #{user.name}
-					span &nbsp;
-					a.navbar-link(href='/logout') 登出
-						
-			else	
-				p.navbar-text.navbar-right
-					a.navbar-link(href="#",data-toggle="modal",data-target="#signupModal") 注册
-					span &nbsp;|&nbsp;
-					a.navbar-link(href="#",data-toggle="modal",data-target="#signinModal") 登陆
+		nav.collapse.navbar-collapse(id="navbar")
+			ul.nav.navbar-nav
+				li
+					a.active(href="/") 首页
+				li
+					a(href="/movie/55018cc528d8b38816182308") ONE 故事
+				li 
+					a(href="/movie/55027e809d043f38162a4dc3") ONE 音乐
+				li
+					a(href="/movie/550280229d043f38162a4dc4") ONE 演讲		
+			ul.nav.navbar-nav.navbar-right
+				if user
+					p.navbar-text.navbar-right#loginwelcome 
+						span 欢迎你,
+						span(id="loginname") #{user.name}
+						span &nbsp;&nbsp;
+						a.navbar-link(href='/logout') 登出
+							
+				else	
+					p.navbar-text.navbar-right
+						a.navbar-link(href="#",data-toggle="modal",data-target="#signupModal") 注册
+						span &nbsp;|&nbsp;
+						a.navbar-link(href="#",data-toggle="modal",data-target="#signinModal") 登录	
+		//- .container
+		//- 	.navbar-header
+		//- 		//- a.navbar-brand(href="/") 课间
+				
 
 
-#signupModal.modal.fade
-	.modal-dialog
-		.modal-content
-			form(method="POST", action="/user/signup")
-				.modal-header 注册
-				.modal-body
-					.form-group
-						label(for="signupName") 用户名
-						input#signupName.form-control(name="name", type="text")
-					.form-group
-						label(for="signupPassword") 密码
-						input#signupPassword.form-control(name="password", type="password")
-				.modal-footer
-					button.btn.btn-default(type="button", data-dismiss="modal") 关闭
-					button.btn.btn-success(type="submit") 提交
+	#signupModal.modal.fade
+		.modal-dialog
+			.modal-content
+				form( id="signup" method="POST", action="/user/signup")
+					.modal-header
+						p 注册
+						p#errorSignup
+					.modal-body
+						.form-group
+							label(for="signupEmail") 邮箱
+							input#signupEmail.form-control(name="email")
+						.form-group
+							label(for="signupName") 昵称
+							input#signupName.form-control(name="name", type="text")
+						.form-group
+							label(for="signupPassword") 密码
+							input#signupPassword.form-control(name="password", type="password")
+						.form-group
+							label(for="rePassword") 重复密码
+							input#rePassword.form-control(name="repassword" type="password")
+					.modal-footer
+						button.btn.btn-default(type="button", data-dismiss="modal") 关闭
+						button#signupButton.btn.btn-success(type="submit") 提交
 
-#signinModal.modal.fade
-	.modal-dialog
-		.modal-content
-			form(method="POST", action="/user/signin")
-				.modal-header 登录
-				.modal-body
-					.form-group
-						label(for="signinName") 用户名
-						input#signinName.form-control(name="name", type="text")
-					.form-group
-						label(for="signinPassword") 密码
-						input#signinPassword.form-control(name="password", type="password")
-				.modal-footer
-					button.btn.btn-default(type="button", data-dismiss="modal") 关闭
-					button.btn.btn-success(type="submit") 提交
+	#signinModal.modal.fade
+		.modal-dialog
+			.modal-content
+				form(method="POST", action="/user/signin" id="signin")
+					.modal-header
+						p 登录
+						p#errorSignin
+					.modal-body
+						.form-group
+							label(for="signinEmail") 邮箱
+							input#signinEmail.form-control(name="email")
+						.form-group
+							label(for="signinPassword") 密码
+							input#signinPassword.form-control(name="password", type="password")
+					.modal-footer
+						button.btn.btn-default(type="button", data-dismiss="modal") 关闭
+						button#loginButton.btn.btn-success(type="submit") 提交
+script(src="/js/validate.js")						
 	//- #signinModal.modal.fade
 //- 	.modal-dialog
 //- 		.modal-content

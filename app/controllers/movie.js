@@ -104,11 +104,13 @@ module.exports.detail = function (req, res)  {
 			.populate("from")
 			.exec(function(err,comments){
 				if(err) return console.log(err);
-				
+				console.log(comments+"null or?");
 				res.render('detail', {
 				title: 'iMovie 影片详情页' ,
 				small:movie.title,
 				movie: movie,
+				movies: global.movies,
+				// 从index中来
 				comments: comments});
 			});
 

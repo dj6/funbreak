@@ -3,8 +3,12 @@ html
 	head
 	meta(charset='utf-8')
 	title #{titile}
+	link(rel='stylesheet' href='/css/layout.css')
 	include ./includes/head
 body
-	include ./includes/header
-	block content
-		
+	.headContainer
+		a(href='/' id='logo') 
+			img(width='120' height='42' src='/img/logo.png')
+		include ./includes/header
+	.contentContainer
+		block content
