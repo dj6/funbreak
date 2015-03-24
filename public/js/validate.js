@@ -77,7 +77,6 @@ $().ready(function() {
 	var error2 = $("#errorSignin");
 
 	signupForm.submit(function(){
-		$("#signupButton").attr("disabled",true);
 		error1.text("");
 		$.post(signupForm.attr("action"),
 			signupForm.serialize(),
@@ -99,8 +98,6 @@ $().ready(function() {
 
 			},
 			"json");
-
-
 		return false;
 	});
 
@@ -120,5 +117,13 @@ $().ready(function() {
 
 		return false;
 	});
+
+	// var navUrl = [];
+	// $("a.navlink").each(function(index, val) {
+	// 	  iterate through array or object 
+	// 	 navUrl.push($(this).attr("href"));
+	// }); 
+	// localStorage.navUrl = navUrl;
+	// navUrl = null;
 
 });

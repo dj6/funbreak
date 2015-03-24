@@ -10,133 +10,16 @@ block content
 		.container
 			content
 				each item in movies
-					case item.type
-						when "音乐"
-							.row.second
-								.col-md-6.grid
-										figure.effect-oscar
-											img.img-thumbnail(src="img/index1.jpg")
-											figcaption											
-												h1 [ONE 音乐] 
-												p 
-													span.glyphicon.glyphicon-play-circle
-												a(href="/movie/#{item._id}")								
-								.col-md-4.intro
-										h1 ONE 音乐
-										h3 #{item.title}
-										p #{item.summary}
-						when "故事"
-							.row
-								.col-md-4.col-md-offset-1.col-sm-2.intro
-										h1 ONE 故事
-										h3 #{item.title}
-										p #{item.summary}
-								.col-md-6.col-sm-10.grid
-										figure.effect-jazz
-											img.img-thumbnail(src="img/index2.jpg")
-											figcaption											
-												h1 [ONE 故事] 
-												p 
-													span.glyphicon.glyphicon-play-circle
-												a(href="/movie/#{item._id}")														
-						when "演讲"
-							.row
-								.col-md-4.col-md-offset-1.col-sm-2.intro
-										h1 ONE 演讲
-										h3 #{item.title}
-										p #{item.summary}
-								.col-md-6.col-sm-10.grid
-										figure.effect-lexi
-											img.img-thumbnail(src="img/index3.jpg")
-											figcaption											
-												h1 [ONE 演讲] 
-												p 
-													span.glyphicon.glyphicon-play-circle
-												a(href="/movie/#{item._id}")																											
-							//- when "故事"							
-							//- 	.row.second
-							//- 		.col-md-8.col-sm-10		
-							//- 			a(href="/movie/#{item._id}")
-							//- 				img.img-thumbnail(src="img/index2.jpg")
-							//- 		.col-md-4.col-sm-2
-							//- 				h1 ONE 故事
-							//- 				h3 #{item.title}
-							//- 				p #{item.summary}
-							//- when "演讲"				
-							//- 	.row.second
-							//- 		.col-md-8.col-sm-10		
-							//- 			a(href="/movie/#{item._id}")
-							//- 				img.img-thumbnail(src="img/index3.jpg")
-							//- 		.col-md-4.col-sm-2
-							//- 				h1 ONE 演讲
-							//- 				h3 #{item.title}
-							//- 				p #{item.summary}
-				//- .grid
-				//- 	figure.effect-oscar
-				//- 		img(src="img/index1.jpg")
-				//- 		figcaption											
-				//- 			h1 ONE 音乐
-				//- 			h3 东方闪电
-				//- 			p 士大夫似的
-				//- 				p
-				//- 					span.glyphicon.glyphicon-play-circle
-							a(href="")
-								//- span.glyphicon.glyphicon-chevron-right	
-								//- when "故事"							
-								//- 	.row.second
-								//- 		.col-md-8.col-sm-10		
-								//- 			a(href="/movie/#{item._id}")
-								//- 				img.img-thumbnail(src="img/index2.jpg")
-								//- 		.col-md-4.col-sm-2
-								//- 				h1 ONE 故事
-								//- 				h3 #{item.title}
-								//- 				p #{item.summary}
-								//- when "演讲"				
-								//- 	.row.second
-								//- 		.col-md-8.col-sm-10		
-								//- 			a(href="/movie/#{item._id}")
-								//- 				img.img-thumbnail(src="img/index3.jpg")
-								//- 		.col-md-4.col-sm-2
-								//- 				h1 ONE 演讲
-								//- 				h3 #{item.title}
-								//- 				p #{item.summary}
-								//- .carousel.slide(id="intro-carousel")
-								//- 	ol.carousel-indicators
-								//- 		li.active(data-target="#intro-carousel" data-slide-to="0")
-								//- 		li(data-target="#intro-carousel" data-slide-to="1")
-								//- 		li(data-target="#intro-carousel" data-slide-to="2")				
-								//- 	.carousel-inner
-								//- 			.active.item								
-								//- 				.carousel-caption
-								//- 					h2 ONE 音乐
-								//- 					h4 为你精选东方闪电sdfsd
-								//- 				img(src="img/index1.jpg")					
-								//- 			.item
-								//- 				.carousel-caption
-								//- 					h2 ONE 故事
-								//- 					h4 使用了四种栅格选项来形成栅格系统
-								//- 				img(src="img/index2.jpg")				
-								//- 			.item
-								//- 				.carousel-caption
-								//- 					h2 ONE 演讲
-								//- 					h4 这四种选项在官网上的介绍
-								//- 				img(src="img/index3.jpg")					
-								//- 		a.carousel-control.left(href="#intro-carousel" data-slide="prev")
-								//- 			span.glyphicon.glyphicon-chevron-left
-								//- 		a.carousel-control.right(href="#intro-carousel" data-slide="next")
-								//- 			span.glyphicon.glyphicon-chevron-right
-			
-	//- .container					
-		//- .row
-		//- 	each item in movies
-		//- 		.col-md-4
-		//- 			.thumbnail
-		//- 				a(href="/movie/#{item._id}")
-		//- 					img(src="#{item.poster}",alt="#{item.title}")
-		//- 				.caption
-		//- 					h3 #{item.title}
-		//- 					p
-		//- 						a.btn.btn-primary(href="/movie/#{item._id}",role="button")  详情
-
-
-
+					.row.second
+						.col-md-6.grid
+								figure.effect-jazz
+									img.img-thumbnail(src="img/#{item.type}.jpg")
+									figcaption											
+										h1 [ONE #{item.type}] 
+										p 
+											span.glyphicon.glyphicon-play-circle
+										a(href="/movie/#{item._id}")								
+						.col-md-4.intro
+								h1 ONE #{item.type}
+								h3 #{item.title}
+								p #{item.summary}

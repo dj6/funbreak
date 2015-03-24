@@ -3,13 +3,13 @@ header.navbar.navbar-static-top
 		nav.collapse.navbar-collapse(id="navbar")
 			ul.nav.navbar-nav
 				li
-					a.active(href="/") 首页
+					a.navlink.active(href="/") 首页
 				li
-					a(href="/movie/55018cc528d8b38816182308") ONE 故事
+					a.navlink(href="/movie/#{movies[0]._id}") ONE 故事
 				li 
-					a(href="/movie/55027e809d043f38162a4dc3") ONE 音乐
+					a.navlink(href="/movie/#{movies[1]._id}") ONE 音乐
 				li
-					a(href="/movie/550280229d043f38162a4dc4") ONE 演讲		
+					a.navlink(href="/movie/#{movies[2]._id}") ONE 演讲		
 			ul.nav.navbar-nav.navbar-right
 				if user
 					p.navbar-text.navbar-right#loginwelcome 

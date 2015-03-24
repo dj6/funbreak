@@ -40,7 +40,14 @@ var CommentSchema = new Schema({
 
 CommentSchema.pre('save',function(next){
 	var comment = this;
-	var newDate = new Date();
+// change america's time zone into china's time zone
+	var d = new Date();
+	var local = d.getTimezoneOffset()/60;
+	var local_mm = d.getTime();
+	var delt = (local+8)*3600000;
+	var add = local_mm + delt;
+	var newDate = new Date(add);
+
 	comment.meta.createAt = newDate;
 	comment.meta.updateAt = newDate;
 	var date,time;
