@@ -1,15 +1,27 @@
 header.navbar.navbar-static-top
 	.container
 		nav.collapse.navbar-collapse(id="navbar")
-			ul.nav.navbar-nav
-				li
-					a.navlink.active(href="/") 首页
-				li
-					a.navlink(href="/movie/#{movies[0]._id}") ONE 故事
-				li 
-					a.navlink(href="/movie/#{movies[1]._id}") ONE 音乐
-				li
-					a.navlink(href="/movie/#{movies[2]._id}") ONE 演讲		
+			if movies[2]
+				ul.nav.navbar-nav
+					li
+						a.navlink.active(href="/") 首页
+					li
+						a.navlink(href="/movie/#{movies[0]._id}") ONE 故事
+					li 
+						a.navlink(href="/movie/#{movies[1]._id}") ONE 音乐
+					li
+						a.navlink(href="/movie/#{movies[2]._id}") ONE 演讲
+			else
+				ul.nav.navbar-nav
+					li
+						a.navlink.active(href="/") 首页
+					li
+						a.navlink(href="/") ONE 故事
+					li 
+						a.navlink(href="/") ONE 音乐
+					li
+						a.navlink(href="/") ONE 演讲
+							
 			ul.nav.navbar-nav.navbar-right
 				if user
 					p.navbar-text.navbar-right#loginwelcome 

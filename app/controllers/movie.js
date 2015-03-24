@@ -13,7 +13,7 @@ module.exports.update = function(req,res){
 				}
 				res.render('admin',{
 					title:'imovie 电影更新页面' ,
-					small:movie.title,
+					// small:movie.title,
 					movie:movie
 				});
 			});
@@ -26,11 +26,9 @@ module.exports.add = function (req, res)  {
 			small:'插入电影',
 			movie: {
 				_id:'',
-				title: ' ',
-				doctor: ' ',
-				country: ' ',
+				title: ' ',				
 				year: ' ',
-				language: ' ',
+				type: ' ',
 				summary: ' ',
 				poster: ' ',
 				flash: ' '
@@ -42,6 +40,7 @@ module.exports.new = function(req,res){
 	    //console.log(req.body._id);
 		var id = req.body._id;               //判断是否是新记录
 		var movieObj = req.body;
+		console.log("this type"+movieObj.type);
 		var _movie;
 
 		if(id){
@@ -71,11 +70,11 @@ module.exports.new = function(req,res){
 				// summary:"sdfsss",
 				// flash:"dsfdsf"
 
-				director:movieObj.director,
+				// director:movieObj.director,
 				title:movieObj.title,
-				country:movieObj.country,
-				language:movieObj.language,
-				year:movieObj.year,
+				// country:movieObj.country,
+				// language:movieObj.language,
+				type:movieObj.type,
 				poster:movieObj.poster,
 				summary:movieObj.summary,
 				flash:movieObj.flash

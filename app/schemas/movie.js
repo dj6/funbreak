@@ -5,6 +5,7 @@ var MovieSchema = new mongoose.Schema({
 	summary:String,
 	flash:String,
 	poster:String,
+	typeShow:String,
 	type:String,
 	meta:{
 		createAt:{
@@ -23,8 +24,15 @@ var MovieSchema = new mongoose.Schema({
 
 //每次调用save方法之前，都调用这个方法
 MovieSchema.pre('save',function(next){
+	var typeList = {
+		music: "音乐",
+		speech: "演讲",
+		story: "故事"
+	};
 	if(this.isNew){
 		this.meta.createAt = this.meta.updateAt = Date.now();
+		this.typeShow = typeList[this.type];
+		console.log(this.typeShow);
 	}
 	else{
 		this.meta.updateAt = Date.now();

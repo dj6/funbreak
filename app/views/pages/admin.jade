@@ -24,8 +24,11 @@ block content
 						input#inputSummary.form-control(type="text" name="summary")
 				.form-group
 					label.col-sm-2.control-label(for="inputType") 类型
-					.col-sm-10 
-						input#inputType.form-control(type="text" name="type")
+					.col-sm-10
+						select#inputType.form-control(name="type")
+							option(value="music") 音乐
+							option(value="story") 故事
+							option(value="speech") 演讲
 				.form-group
 					input.col-sm-2.form-control(type="submit" value="提交") 		
 
